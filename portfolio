@@ -1,874 +1,1685 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Nanfah — Creative Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
-
-:root{
-    --bg:#080b09;
-    --card:#101612;
-    --card2:#141b16;
-    --green:#39d98a;
-    --green-dark:#123d2b;
-    --gold:#d7b86a;
-    --white:#f4f5f2;
-    --muted:#8c9690;
-    --border:rgba(255,255,255,.09);
-}
-
-body{
-    background:
-        radial-gradient(circle at 80% 10%,rgba(57,217,138,.10),transparent 28%),
-        radial-gradient(circle at 10% 80%,rgba(215,184,106,.07),transparent 25%),
-        var(--bg);
-    color:var(--white);
-    font-family:'Plus Jakarta Sans',sans-serif;
-    overflow-x:hidden;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-.container{
-    width:min(1180px,92%);
-    margin:auto;
-}
-
-/* NAVBAR */
-
-nav{
-    position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
-    width:min(1100px,92%);
-    z-index:100;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:14px 20px;
-    border:1px solid var(--border);
-    border-radius:18px;
-    background:rgba(10,14,11,.78);
-    backdrop-filter:blur(18px);
-}
-
-.logo{
-    font-family:'Instrument Serif',serif;
-    font-size:27px;
-    font-style:italic;
-}
-
-.logo span{
-    color:var(--green);
-}
-
-.nav-links{
-    display:flex;
-    gap:6px;
-}
-
-.nav-links a{
-    padding:9px 14px;
-    border-radius:10px;
-    color:#aeb5b0;
-    font-size:13px;
-    transition:.3s;
-}
-
-.nav-links a:hover{
-    color:white;
-    background:#1b251e;
-}
-
-.nav-btn{
-    padding:10px 17px;
-    border-radius:10px;
-    background:var(--green);
-    color:#07120c;
-    font-weight:700;
-    font-size:13px;
-}
-
-/* HERO */
-
-.hero{
-    min-height:100vh;
-    display:grid;
-    grid-template-columns:1.15fr .85fr;
-    align-items:center;
-    gap:70px;
-    padding-top:100px;
-}
-
-.eyebrow{
-    color:var(--green);
-    font-size:12px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    margin-bottom:20px;
-}
-
-.hero h1{
-    font-family:'Instrument Serif',serif;
-    font-size:clamp(70px,9vw,125px);
-    font-weight:400;
-    line-height:.82;
-    letter-spacing:-4px;
-}
-
-.hero h1 span{
-    color:var(--gold);
-    font-style:italic;
-}
-
-.hero-text{
-    max-width:580px;
-    margin-top:30px;
-    color:var(--muted);
-    font-size:16px;
-    line-height:1.9;
-}
-
-.hero-buttons{
-    display:flex;
-    gap:12px;
-    margin-top:35px;
-}
-
-.primary{
-    background:var(--green);
-    color:#07120c;
-    padding:14px 22px;
-    border-radius:11px;
-    font-weight:700;
-    transition:.3s;
-}
-
-.primary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 15px 35px rgba(57,217,138,.2);
-}
-
-.secondary{
-    border:1px solid var(--border);
-    padding:14px 22px;
-    border-radius:11px;
-    color:#c5cbc7;
-}
-
-.secondary:hover{
-    border-color:var(--green);
-}
-
-/* PROFILE */
-
-.profile-wrap{
-    position:relative;
-    display:flex;
-    justify-content:center;
-}
-
-.profile-ring{
-    width:390px;
-    height:480px;
-    border:1px solid rgba(57,217,138,.35);
-    border-radius:200px 200px 25px 25px;
-    padding:12px;
-    transform:rotate(3deg);
-}
-
-.profile{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:190px 190px 18px 18px;
-    transform:rotate(-3deg);
-    filter:saturate(.9);
-}
-
-.profile-label{
-    position:absolute;
-    bottom:30px;
-    left:-30px;
-    background:#111812;
-    border:1px solid var(--border);
-    padding:14px 18px;
-    border-radius:13px;
-    transform:rotate(-4deg);
-}
-
-.profile-label strong{
-    display:block;
-    color:var(--green);
-    font-size:12px;
-}
-
-.profile-label small{
-    color:#8d968f;
-}
-
-/* SECTION */
-
-.section{
-    padding:110px 0;
-}
-
-.section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-    margin-bottom:45px;
-}
-
-.section-number{
-    color:var(--green);
-    font-size:12px;
-    letter-spacing:2px;
-}
-
-.section-title{
-    font-family:'Instrument Serif',serif;
-    font-size:58px;
-    font-weight:400;
-}
-
-.section-desc{
-    max-width:420px;
-    color:var(--muted);
-    line-height:1.8;
-    font-size:14px;
-}
-
-/* ABOUT */
-
-.about-grid{
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:20px;
-}
-
-.about-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:24px;
-    padding:35px;
-}
-
-.about-card h3{
-    font-family:'Instrument Serif',serif;
-    font-size:38px;
-    margin-bottom:20px;
-}
-
-.about-card p{
-    color:var(--muted);
-    line-height:1.9;
-    font-size:14px;
-}
-
-.quote{
-    margin-top:30px;
-    padding-left:20px;
-    border-left:2px solid var(--gold);
-    color:#c8cec9!important;
-    font-style:italic;
-}
-
-/* SKILLS */
-
-.skills{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
-.skill{
-    padding:27px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:18px;
-    transition:.35s;
-}
-
-.skill:hover{
-    transform:translateY(-7px);
-    border-color:rgba(57,217,138,.35);
-}
-
-.skill-icon{
-    width:42px;
-    height:42px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:10px;
-    background:var(--green-dark);
-    color:var(--green);
-    margin-bottom:20px;
-    font-weight:800;
-}
-
-.skill h4{
-    margin-bottom:8px;
-}
-
-.skill p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.7;
-}
-
-/* PROJECTS */
-
-.projects{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-}
-
-.project{
-    min-height:300px;
-    padding:30px;
-    border-radius:22px;
-    background:linear-gradient(145deg,#151c17,#0d120e);
-    border:1px solid var(--border);
-    position:relative;
-    overflow:hidden;
-    transition:.35s;
-}
-
-.project:hover{
-    transform:translateY(-6px);
-}
-
-.project:nth-child(2){
-    background:linear-gradient(145deg,#19170f,#0d0e0b);
-}
-
-.project:nth-child(3){
-    background:linear-gradient(145deg,#101a17,#0b100e);
-}
-
-.project-number{
-    color:var(--green);
-    font-size:12px;
-}
-
-.project h3{
-    font-family:'Instrument Serif',serif;
-    font-size:43px;
-    font-weight:400;
-    margin-top:65px;
-}
-
-.project p{
-    color:var(--muted);
-    font-size:13px;
-    max-width:450px;
-    margin-top:12px;
-}
-
-.project-link{
-    position:absolute;
-    right:25px;
-    bottom:25px;
-    width:42px;
-    height:42px;
-    border:1px solid var(--border);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--gold);
-}
-
-/* EXPERIENCE */
-
-.timeline{
-    border-left:1px solid #28342d;
-    margin-left:15px;
-}
-
-.timeline-item{
-    position:relative;
-    padding:0 0 55px 40px;
-}
-
-.timeline-item::before{
-    content:'';
-    position:absolute;
-    left:-5px;
-    top:5px;
-    width:9px;
-    height:9px;
-    background:var(--green);
-    border-radius:50%;
-    box-shadow:0 0 20px rgba(57,217,138,.6);
-}
-
-.timeline-year{
-    color:var(--gold);
-    font-size:12px;
-    margin-bottom:10px;
-}
-
-.timeline-item h3{
-    font-family:'Instrument Serif',serif;
-    font-size:32px;
-    font-weight:400;
-}
-
-.timeline-item p{
-    color:var(--muted);
-    margin-top:8px;
-    line-height:1.8;
-    font-size:14px;
-}
-
-/* CONTACT */
-
-.contact{
-    padding:70px;
-    background:linear-gradient(135deg,#132019,#0e130f);
-    border:1px solid var(--border);
-    border-radius:28px;
-    text-align:center;
-}
-
-.contact h2{
-    font-family:'Instrument Serif',serif;
-    font-size:65px;
-    font-weight:400;
-}
-
-.contact h2 span{
-    color:var(--green);
-    font-style:italic;
-}
-
-.contact p{
-    color:var(--muted);
-    margin:15px auto 30px;
-    max-width:500px;
-    line-height:1.8;
-}
-
-footer{
-    text-align:center;
-    padding:50px 0;
-    color:#68716b;
-    font-size:12px;
-}
-
-/* MOBILE */
-
-@media(max-width:800px){
-
-    .nav-links{
-        display:none;
-    }
-
-    .hero{
-        grid-template-columns:1fr;
-        gap:45px;
-        padding-top:140px;
-    }
-
-    .hero h1{
-        font-size:75px;
-    }
-
-    .profile-wrap{
-        order:-1;
-    }
-
-    .profile-ring{
-        width:280px;
-        height:350px;
-    }
-
-    .profile-label{
-        left:5%;
-    }
-
-    .about-grid{
-        grid-template-columns:1fr;
-    }
-
-    .skills{
-        grid-template-columns:1fr;
-    }
-
-    .projects{
-        grid-template-columns:1fr;
-    }
-
-    .section-head{
-        display:block;
-    }
-
-    .section-desc{
-        margin-top:15px;
-    }
-
-    .contact{
-        padding:45px 20px;
-    }
-
-    .contact h2{
-        font-size:48px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nanfah — Creative Portfolio</title>
+
+    <meta name="description" content="Portfolio ของนางสาวน่านฟ้า ม่วงกำพันธ์">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* ========================================
+           RESET
+        ======================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        html {
+            scroll-padding-top: 100px;
+        }
+
+        :root {
+            --bg: #080b09;
+            --bg-soft: #0c110e;
+            --card: #101612;
+            --card-2: #141b16;
+
+            --green: #39d98a;
+            --green-light: #67e8a8;
+            --green-dark: #123d2b;
+
+            --gold: #d7b86a;
+            --gold-light: #e8d08a;
+
+            --white: #f4f5f2;
+            --text: #dfe4e0;
+            --muted: #8c9690;
+
+            --border: rgba(255, 255, 255, 0.09);
+        }
+
+        body {
+            background:
+                radial-gradient(
+                    circle at 80% 10%,
+                    rgba(57, 217, 138, 0.10),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 10% 80%,
+                    rgba(215, 184, 106, 0.07),
+                    transparent 25%
+                ),
+                var(--bg);
+
+            color: var(--white);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.015) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.015) 1px,
+                    transparent 1px
+                );
+            background-size: 50px 50px;
+            mask-image: linear-gradient(
+                to bottom,
+                black,
+                transparent 80%
+            );
+            z-index: -1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+
+        /* ========================================
+           NAVBAR
+        ======================================== */
+
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: min(1100px, 92%);
+
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 14px 20px;
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            background: rgba(10, 14, 11, 0.80);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .logo {
+            font-family: 'Instrument Serif', serif;
+            font-size: 29px;
+            font-style: italic;
+        }
+
+        .logo span {
+            color: var(--green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+        }
+
+        .nav-links a {
+            padding: 9px 13px;
+            border-radius: 10px;
+
+            color: #aeb5b0;
+            font-size: 13px;
+
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            background: #1b251e;
+        }
+
+        .nav-btn {
+            padding: 10px 17px;
+
+            border-radius: 10px;
+
+            background: var(--green);
+            color: #07120c;
+
+            font-weight: 700;
+            font-size: 13px;
+
+            transition: 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(57,217,138,0.25);
+        }
+
+
+        /* ========================================
+           HERO
+        ======================================== */
+
+        .hero {
+            min-height: 100vh;
+
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+
+            align-items: center;
+
+            gap: 70px;
+
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .eyebrow {
+            color: var(--green);
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-family: 'Instrument Serif', serif;
+
+            font-size: clamp(70px, 9vw, 125px);
+
+            font-weight: 400;
+
+            line-height: 0.82;
+
+            letter-spacing: -4px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .hero-text {
+            max-width: 580px;
+
+            margin-top: 32px;
+
+            color: var(--muted);
+
+            font-size: 16px;
+
+            line-height: 1.9;
+        }
+
+        .hero-text b {
+            color: #dfe5e0;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 35px;
+        }
+
+        .primary {
+            display: inline-block;
+
+            background: var(--green);
+            color: #07120c;
+
+            padding: 14px 22px;
+
+            border-radius: 11px;
+
+            font-weight: 700;
+
+            transition: 0.3s ease;
+        }
+
+        .primary:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 35px rgba(57,217,138,0.20);
+        }
+
+        .secondary {
+            display: inline-block;
+
+            border: 1px solid var(--border);
+
+            padding: 14px 22px;
+
+            border-radius: 11px;
+
+            color: #c5cbc7;
+
+            transition: 0.3s ease;
+        }
+
+        .secondary:hover {
+            border-color: var(--green);
+            color: white;
+        }
+
+
+        /* ========================================
+           PROFILE
+        ======================================== */
+
+        .profile-wrap {
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-glow {
+            position: absolute;
+
+            width: 280px;
+            height: 280px;
+
+            background: rgba(57,217,138,0.14);
+
+            filter: blur(80px);
+
+            border-radius: 50%;
+
+            z-index: -1;
+        }
+
+        .profile-ring {
+            width: 390px;
+            height: 480px;
+
+            border: 1px solid rgba(57,217,138,0.35);
+
+            border-radius: 200px 200px 25px 25px;
+
+            padding: 12px;
+
+            transform: rotate(3deg);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(57,217,138,0.08),
+                    transparent
+                );
+        }
+
+        .profile {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            border-radius:
+                190px 190px 18px 18px;
+
+            transform: rotate(-3deg);
+
+            filter: saturate(.9);
+
+            background: #151c17;
+        }
+
+        .profile-label {
+            position: absolute;
+
+            bottom: 30px;
+            left: -30px;
+
+            background: #111812;
+
+            border: 1px solid var(--border);
+
+            padding: 14px 18px;
+
+            border-radius: 13px;
+
+            transform: rotate(-4deg);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .profile-label strong {
+            display: block;
+
+            color: var(--green);
+
+            font-size: 12px;
+        }
+
+        .profile-label small {
+            color: #8d968f;
+        }
+
+
+        /* ========================================
+           SECTION
+        ======================================== */
+
+        .section {
+            padding: 110px 0;
+        }
+
+        .section-head {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: end;
+
+            gap: 30px;
+
+            margin-bottom: 45px;
+        }
+
+        .section-number {
+            color: var(--green);
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-family: 'Instrument Serif', serif;
+
+            font-size: 58px;
+
+            font-weight: 400;
+
+            line-height: 1;
+        }
+
+        .section-desc {
+            max-width: 420px;
+
+            color: var(--muted);
+
+            line-height: 1.8;
+
+            font-size: 14px;
+        }
+
+
+        /* ========================================
+           ABOUT
+        ======================================== */
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns: 0.8fr 1.2fr;
+
+            gap: 20px;
+        }
+
+        .about-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 24px;
+
+            padding: 35px;
+
+            transition: 0.3s ease;
+        }
+
+        .about-card:hover {
+            border-color: rgba(57,217,138,0.25);
+
+            transform: translateY(-4px);
+        }
+
+        .about-card h3 {
+            font-family: 'Instrument Serif', serif;
+
+            font-size: 38px;
+
+            font-weight: 400;
+
+            margin-bottom: 20px;
+        }
+
+        .about-card p {
+            color: var(--muted);
+
+            line-height: 1.9;
+
+            font-size: 14px;
+        }
+
+        .about-card b {
+            color: #dfe5e0;
+        }
+
+        .quote {
+            margin-top: 30px;
+
+            padding-left: 20px;
+
+            border-left: 2px solid var(--gold);
+
+            color: #c8cec9 !important;
+
+            font-style: italic;
+        }
+
+
+        /* ========================================
+           SKILLS
+        ======================================== */
+
+        .skills {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+        .skill {
+            padding: 27px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            transition: 0.35s ease;
+        }
+
+        .skill:hover {
+            transform: translateY(-7px);
+
+            border-color:
+                rgba(57,217,138,0.35);
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.18);
+        }
+
+        .skill-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: var(--green-dark);
+
+            color: var(--green);
+
+            margin-bottom: 20px;
+
+            font-weight: 800;
+        }
+
+        .skill h4 {
+            margin-bottom: 8px;
+
+            font-size: 17px;
+        }
+
+        .skill p {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        /* ========================================
+           PROJECTS
+        ======================================== */
+
+        .projects {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+        .project {
+            min-height: 300px;
+
+            padding: 30px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #151c17,
+                    #0d120e
+                );
+
+            border: 1px solid var(--border);
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: 0.35s ease;
+        }
+
+        .project::after {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            right: -70px;
+            top: -70px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(57,217,138,0.06);
+
+            filter: blur(5px);
+        }
+
+        .project:hover {
+            transform: translateY(-6px);
+
+            border-color:
+                rgba(57,217,138,0.25);
+        }
+
+        .project:nth-child(2) {
+            background:
+                linear-gradient(
+                    145deg,
+                    #19170f,
+                    #0d0e0b
+                );
+        }
+
+        .project:nth-child(3) {
+            background:
+                linear-gradient(
+                    145deg,
+                    #101a17,
+                    #0b100e
+                );
+        }
+
+        .project:nth-child(4) {
+            background:
+                linear-gradient(
+                    145deg,
+                    #171318,
+                    #0d0c0f
+                );
+        }
+
+        .project-number {
+            color: var(--green);
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .project h3 {
+            font-family: 'Instrument Serif', serif;
+
+            font-size: 43px;
+
+            font-weight: 400;
+
+            margin-top: 65px;
+        }
+
+        .project p {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            max-width: 450px;
+
+            margin-top: 12px;
+        }
+
+        .project-link {
+            position: absolute;
+
+            right: 25px;
+            bottom: 25px;
+
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: var(--gold);
+
+            z-index: 2;
+        }
+
+
+        /* ========================================
+           EDUCATION TIMELINE
+        ======================================== */
+
+        .timeline {
+            border-left:
+                1px solid #28342d;
+
+            margin-left: 15px;
+        }
+
+        .timeline-item {
+            position: relative;
+
+            padding:
+                0 0 55px 40px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: "";
+
+            position: absolute;
+
+            left: -5px;
+            top: 5px;
+
+            width: 9px;
+            height: 9px;
+
+            background: var(--green);
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 20px
+                rgba(57,217,138,0.6);
+        }
+
+        .timeline-year {
+            color: var(--gold);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 10px;
+        }
+
+        .timeline-item h3 {
+            font-family: 'Instrument Serif', serif;
+
+            font-size: 32px;
+
+            font-weight: 400;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+
+            margin-top: 8px;
+
+            line-height: 1.8;
+
+            font-size: 14px;
+        }
+
+
+        /* ========================================
+           CONTACT
+        ======================================== */
+
+        .contact {
+            padding: 70px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #132019,
+                    #0e130f
+                );
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 28px;
+
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Instrument Serif', serif;
+
+            font-size: 65px;
+
+            font-weight: 400;
+
+            line-height: 1;
+        }
+
+        .contact h2 span {
+            color: var(--green);
+
+            font-style: italic;
+        }
+
+        .contact p {
+            color: var(--muted);
+
+            margin:
+                15px auto 30px;
+
+            max-width: 500px;
+
+            line-height: 1.8;
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        footer {
+            text-align: center;
+
+            padding: 50px 0;
+
+            color: #68716b;
+
+            font-size: 12px;
+        }
+
+
+        /* ========================================
+           MOBILE
+        ======================================== */
+
+        @media (max-width: 800px) {
+
+            nav {
+                top: 10px;
+
+                padding:
+                    12px 14px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-btn {
+                padding:
+                    9px 13px;
+
+                font-size: 12px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+
+                padding-top: 140px;
+
+                text-align: center;
+            }
+
+            .hero-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 75px;
+
+                letter-spacing: -3px;
+            }
+
+            .profile-wrap {
+                order: -1;
+            }
+
+            .profile-ring {
+                width: 280px;
+                height: 350px;
+            }
+
+            .profile-label {
+                left: 5%;
+
+                bottom: 15px;
+            }
+
+            .section {
+                padding:
+                    80px 0;
+            }
+
+            .section-head {
+                display: block;
+            }
+
+            .section-desc {
+                margin-top: 15px;
+            }
+
+            .section-title {
+                font-size: 48px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                padding:
+                    45px 20px;
+            }
+
+            .contact h2 {
+                font-size: 48px;
+            }
+        }
+
+
+        /* ========================================
+           SMALL PHONE
+        ======================================== */
+
+        @media (max-width: 420px) {
+
+            .hero h1 {
+                font-size: 63px;
+            }
+
+            .profile-ring {
+                width: 250px;
+                height: 320px;
+            }
+
+            .profile-label {
+                font-size: 11px;
+            }
+
+            .section-title {
+                font-size: 43px;
+            }
+
+            .about-card {
+                padding: 25px;
+            }
+
+            .project {
+                min-height: 270px;
+
+                padding: 25px;
+            }
+
+            .project h3 {
+                font-size: 38px;
+
+                margin-top: 50px;
+            }
+
+            .contact h2 {
+                font-size: 42px;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<!-- NAVBAR -->
+    <!-- ========================================
+         NAVBAR
+    ======================================== -->
 
-<nav>
-    <div class="logo">Nanfah<span>.</span></div>
+    <nav>
 
-    <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Education</a>
-    </div>
-
-    <a href="#contact" class="nav-btn">Let's Talk</a>
-</nav>
-
-<main class="container">
-
-<!-- HERO -->
-
-<section class="hero">
-
-    <div>
-        <div class="eyebrow">
-            Future Nursing Assistant / 2026
+        <div class="logo">
+            Nanfah<span>.</span>
         </div>
 
-        <h1>
-            Learn.<br>
-            Care.<br>
-            <span>Inspire.</span>
-        </h1>
+        <div class="nav-links">
 
-        <p class="hero-text">
-            สวัสดีค่ะ ดิฉันชื่อ <b>นางสาวน่านฟ้า ม่วงกำพันธ์</b>
-            เป็นนักเรียนที่มุ่งมั่นในการศึกษาและพัฒนาตนเอง
-            โดยมีเป้าหมายในอนาคตคือการทำงานเป็น
-            <b>ผู้ช่วยพยาบาล</b> เพื่อดูแลและช่วยเหลือผู้อื่น
-        </p>
-
-        <div class="hero-buttons">
-            <a href="#about" class="primary">
-                About Me →
+            <a href="#about">
+                About
             </a>
 
-            <a href="#contact" class="secondary">
-                Contact Me
+            <a href="#skills">
+                Skills
             </a>
-        </div>
-    </div>
 
-    <div class="profile-wrap">
+            <a href="#projects">
+                Projects
+            </a>
 
-        <div class="profile-ring">
-            <img src="676767.jpg"
-                 alt="นางสาวน่านฟ้า ม่วงกำพันธ์"
-                 class="profile">
-        </div>
+            <a href="#experience">
+                Education
+            </a>
 
-        <div class="profile-label">
-            <strong>NANFAH MUANGKAMPHAN</strong>
-            <small>Future Nursing Assistant</small>
         </div>
 
-    </div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section class="section" id="about">
-
-    <div class="section-head">
-        <div>
-            <div class="section-number">01 / ABOUT ME</div>
-            <h2 class="section-title">About Me</h2>
-        </div>
-
-        <p class="section-desc">
-            ประวัติส่วนตัวและเป้าหมายในการศึกษา
-            เพื่อก้าวไปสู่อาชีพผู้ช่วยพยาบาลในอนาคต
-        </p>
-    </div>
-
-    <div class="about-grid">
-
-        <div class="about-card">
-            <h3>My Story</h3>
-
-            <p>
-                ดิฉันชื่อ <b>นางสาวน่านฟ้า ม่วงกำพันธ์</b>
-                เป็นผู้ที่มีความตั้งใจในการเรียนรู้
-                และสนใจงานด้านการดูแลสุขภาพและการช่วยเหลือผู้อื่น
-            </p>
-
-            <p class="quote">
-                “ความตั้งใจในวันนี้ คือก้าวสำคัญสู่ความฝันในวันข้างหน้า”
-            </p>
-        </div>
-
-        <div class="about-card">
-            <h3>Education</h3>
-
-            <p>
-                <b>ระดับประถมศึกษา</b><br>
-                โรงเรียนบ้านดอนมะขาม
-            </p>
-
-            <br>
-
-            <p>
-                <b>ระดับมัธยมศึกษา</b><br>
-                โรงเรียนสามร้อยยอดวิทยาคม
-            </p>
-
-            <br>
-
-            <p>
-                <b>ประกาศนียบัตรอาชีพ</b><br>
-                ศึกษาต่อในสายอาชีพเพื่อพัฒนาความรู้และทักษะ
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SKILLS -->
-
-<section class="section" id="skills">
-
-    <div class="section-head">
-        <div>
-            <div class="section-number">02 / SKILLS</div>
-            <h2 class="section-title">My Skills</h2>
-        </div>
-
-        <p class="section-desc">
-            ทักษะที่ต้องการพัฒนาเพื่อเตรียมพร้อม
-            สำหรับการทำงานด้านการดูแลผู้ป่วย
-        </p>
-    </div>
-
-    <div class="skills">
-
-        <div class="skill">
-            <div class="skill-icon">01</div>
-            <h4>Care</h4>
-            <p>
-                มีความใส่ใจและพร้อมดูแลช่วยเหลือผู้อื่น
-                ด้วยความรับผิดชอบ
-            </p>
-        </div>
-
-        <div class="skill">
-            <div class="skill-icon">02</div>
-            <h4>Communication</h4>
-            <p>
-                สามารถสื่อสารและพูดคุยกับผู้อื่น
-                ด้วยความสุภาพและเข้าใจ
-            </p>
-        </div>
-
-        <div class="skill">
-            <div class="skill-icon">03</div>
-            <h4>Learning</h4>
-            <p>
-                มีความตั้งใจเรียนรู้สิ่งใหม่ ๆ
-                และพัฒนาทักษะของตนเองอยู่เสมอ
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PROJECTS -->
-
-<section class="section" id="projects">
-
-    <div class="section-head">
-        <div>
-            <div class="section-number">03 / ACTIVITIES</div>
-            <h2 class="section-title">My Journey</h2>
-        </div>
-
-        <p class="section-desc">
-            เส้นทางการเรียนรู้และการเตรียมตัว
-            เพื่อไปสู่อาชีพในอนาคต
-        </p>
-    </div>
-
-    <div class="projects">
-
-        <div class="project">
-            <div class="project-number">01</div>
-            <h3>Education</h3>
-            <p>
-                ตั้งใจศึกษาและพัฒนาความรู้
-                ตั้งแต่ระดับประถมศึกษาจนถึงระดับประกาศนียบัตรอาชีพ
-            </p>
-
-            <div class="project-link">↗</div>
-        </div>
-
-        <div class="project">
-            <div class="project-number">02</div>
-            <h3>Learning</h3>
-            <p>
-                เรียนรู้ทักษะที่เกี่ยวข้องกับการดูแล
-                และการช่วยเหลือผู้อื่น
-            </p>
-
-            <div class="project-link">↗</div>
-        </div>
-
-        <div class="project">
-            <div class="project-number">03</div>
-            <h3>My Goal</h3>
-            <p>
-                มุ่งมั่นพัฒนาตนเองเพื่อก้าวไปสู่
-                อาชีพผู้ช่วยพยาบาลในอนาคต
-            </p>
-
-            <div class="project-link">↗</div>
-        </div>
-
-        <div class="project">
-            <div class="project-number">04</div>
-            <h3>Future</h3>
-            <p>
-                นำความรู้และทักษะที่เรียนมา
-                ไปใช้ในการดูแลและช่วยเหลือผู้ป่วย
-            </p>
-
-            <div class="project-link">↗</div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- EXPERIENCE / EDUCATION -->
-
-<section class="section" id="experience">
-
-    <div class="section-head">
-        <div>
-            <div class="section-number">04 / EDUCATION</div>
-            <h2 class="section-title">My Education</h2>
-        </div>
-
-        <p class="section-desc">
-            ประวัติการศึกษาและเส้นทางสู่เป้าหมายในอนาคต
-        </p>
-    </div>
-
-    <div class="timeline">
-
-        <div class="timeline-item">
-            <div class="timeline-year">PRIMARY SCHOOL</div>
-            <h3>โรงเรียนบ้านดอนมะขาม</h3>
-            <p>
-                ศึกษาระดับประถมศึกษา
-            </p>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-year">SECONDARY SCHOOL</div>
-            <h3>โรงเรียนสามร้อยยอดวิทยาคม</h3>
-            <p>
-                ศึกษาระดับมัธยมศึกษา
-            </p>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-year">VOCATIONAL CERTIFICATE</div>
-            <h3>ประกาศนียบัตรอาชีพ</h3>
-            <p>
-                ศึกษาต่อในสายอาชีพ เพื่อเตรียมความพร้อม
-                สำหรับการทำงานในอนาคต
-            </p>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-year">FUTURE CAREER</div>
-            <h3>ผู้ช่วยพยาบาล</h3>
-            <p>
-                เป้าหมายในอนาคต คือการเป็นผู้ช่วยพยาบาล
-                และใช้ความรู้ความสามารถในการดูแลและช่วยเหลือผู้อื่น
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section class="section" id="contact">
-
-    <div class="contact">
-
-        <h2>
-            Let's <span>Connect.</span>
-        </h2>
-
-        <p>
-            ขอบคุณที่เข้ามาชม Portfolio ของ
-            นางสาวน่านฟ้า ม่วงกำพันธ์
-        </p>
-
-        <a href="mailto:example@email.com" class="primary">
-            Contact Me →
+        <a href="#contact" class="nav-btn">
+            Let's Talk
         </a>
 
-    </div>
-
-</section>
-
-</main>
+    </nav>
 
 
-<footer>
-    © 2026 Nanfah Muangkhamphan — Creative Portfolio
-</footer>
+    <!-- ========================================
+         MAIN
+    ======================================== -->
+
+    <main class="container">
+
+
+        <!-- ====================================
+             HERO
+        ==================================== -->
+
+        <section class="hero">
+
+            <div>
+
+                <div class="eyebrow">
+                    Future Nursing Assistant / 2026
+                </div>
+
+                <h1>
+                    Learn.<br>
+                    Care.<br>
+                    <span>Inspire.</span>
+                </h1>
+
+                <p class="hero-text">
+
+                    สวัสดีค่ะ ดิฉันชื่อ
+                    <b>นางสาวน่านฟ้า ม่วงกำพันธ์</b>
+
+                    เป็นนักเรียนที่มุ่งมั่นในการศึกษา
+                    และพัฒนาตนเอง
+
+                    โดยมีเป้าหมายในอนาคตคือการทำงานเป็น
+                    <b>ผู้ช่วยพยาบาล</b>
+
+                    เพื่อดูแลและช่วยเหลือผู้อื่น
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#about" class="primary">
+                        About Me →
+                    </a>
+
+                    <a href="#contact" class="secondary">
+                        Contact Me
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROFILE -->
+
+            <div class="profile-wrap">
+
+                <div class="profile-glow"></div>
+
+                <div class="profile-ring">
+
+                    <!--
+                        IMPORTANT:
+                        ใส่รูป 676767.jpg
+                        ไว้โฟลเดอร์เดียวกับ index.html
+                    -->
+
+                    <img
+                        src="./676767.jpg"
+                        alt="นางสาวน่านฟ้า ม่วงกำพันธ์"
+                        class="profile"
+                        onerror="this.style.display='none';"
+                    >
+
+                </div>
+
+                <div class="profile-label">
+
+                    <strong>
+                        NANFAH MUANGKAMPHAN
+                    </strong>
+
+                    <small>
+                        Future Nursing Assistant
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             ABOUT
+        ==================================== -->
+
+        <section
+            class="section"
+            id="about"
+        >
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="section-number">
+                        01 / ABOUT ME
+                    </div>
+
+                    <h2 class="section-title">
+                        About Me
+                    </h2>
+
+                </div>
+
+                <p class="section-desc">
+
+                    ประวัติส่วนตัวและเป้าหมายในการศึกษา
+                    เพื่อก้าวไปสู่อาชีพผู้ช่วยพยาบาลในอนาคต
+
+                </p>
+
+            </div>
+
+
+            <div class="about-grid">
+
+
+                <div class="about-card">
+
+                    <h3>
+                        My Story
+                    </h3>
+
+                    <p>
+
+                        ดิฉันชื่อ
+                        <b>นางสาวน่านฟ้า ม่วงกำพันธ์</b>
+
+                        เป็นผู้ที่มีความตั้งใจในการเรียนรู้
+                        และสนใจงานด้านการดูแลสุขภาพ
+                        และการช่วยเหลือผู้อื่น
+
+                    </p>
+
+                    <p class="quote">
+
+                        “ความตั้งใจในวันนี้
+                        คือก้าวสำคัญสู่ความฝันในวันข้างหน้า”
+
+                    </p>
+
+                </div>
+
+
+                <div class="about-card">
+
+                    <h3>
+                        Education
+                    </h3>
+
+                    <p>
+
+                        <b>
+                            ระดับประถมศึกษา
+                        </b>
+
+                        <br>
+
+                        โรงเรียนบ้านดอนมะขาม
+
+                    </p>
+
+                    <br>
+
+                    <p>
+
+                        <b>
+                            ระดับมัธยมศึกษา
+                        </b>
+
+                        <br>
+
+                        โรงเรียนสามร้อยยอดวิทยาคม
+
+                    </p>
+
+                    <br>
+
+                    <p>
+
+                        <b>
+                            ประกาศนียบัตรอาชีพ
+                        </b>
+
+                        <br>
+
+                        ศึกษาต่อในสายอาชีพ
+                        เพื่อพัฒนาความรู้และทักษะ
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             SKILLS
+        ==================================== -->
+
+        <section
+            class="section"
+            id="skills"
+        >
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="section-number">
+                        02 / SKILLS
+                    </div>
+
+                    <h2 class="section-title">
+                        My Skills
+                    </h2>
+
+                </div>
+
+                <p class="section-desc">
+
+                    ทักษะที่ต้องการพัฒนาเพื่อเตรียมพร้อม
+                    สำหรับการทำงานด้านการดูแลผู้ป่วย
+
+                </p>
+
+            </div>
+
+
+            <div class="skills">
+
+
+                <div class="skill">
+
+                    <div class="skill-icon">
+                        01
+                    </div>
+
+                    <h4>
+                        Care
+                    </h4>
+
+                    <p>
+
+                        มีความใส่ใจและพร้อมดูแล
+                        ช่วยเหลือผู้อื่น
+                        ด้วยความรับผิดชอบ
+
+                    </p>
+
+                </div>
+
+
+                <div class="skill">
+
+                    <div class="skill-icon">
+                        02
+                    </div>
+
+                    <h4>
+                        Communication
+                    </h4>
+
+                    <p>
+
+                        สามารถสื่อสารและพูดคุยกับผู้อื่น
+                        ด้วยความสุภาพและเข้าใจ
+
+                    </p>
+
+                </div>
+
+
+                <div class="skill">
+
+                    <div class="skill-icon">
+                        03
+                    </div>
+
+                    <h4>
+                        Learning
+                    </h4>
+
+                    <p>
+
+                        มีความตั้งใจเรียนรู้สิ่งใหม่ ๆ
+                        และพัฒนาทักษะของตนเองอยู่เสมอ
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             PROJECTS / JOURNEY
+        ==================================== -->
+
+        <section
+            class="section"
+            id="projects"
+        >
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="section-number">
+                        03 / ACTIVITIES
+                    </div>
+
+                    <h2 class="section-title">
+                        My Journey
+                    </h2>
+
+                </div>
+
+                <p class="section-desc">
+
+                    เส้นทางการเรียนรู้และการเตรียมตัว
+                    เพื่อไปสู่อาชีพในอนาคต
+
+                </p>
+
+            </div>
+
+
+            <div class="projects">
+
+
+                <div class="project">
+
+                    <div class="project-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Education
+                    </h3>
+
+                    <p>
+
+                        ตั้งใจศึกษาและพัฒนาความรู้
+                        ตั้งแต่ระดับประถมศึกษา
+                        จนถึงระดับประกาศนียบัตรอาชีพ
+
+                    </p>
+
+                    <div class="project-link">
+                        ↗
+                    </div>
+
+                </div>
+
+
+                <div class="project">
+
+                    <div class="project-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Learning
+                    </h3>
+
+                    <p>
+
+                        เรียนรู้ทักษะที่เกี่ยวข้องกับ
+                        การดูแลและการช่วยเหลือผู้อื่น
+
+                    </p>
+
+                    <div class="project-link">
+                        ↗
+                    </div>
+
+                </div>
+
+
+                <div class="project">
+
+                    <div class="project-number">
+                        03
+                    </div>
+
+                    <h3>
+                        My Goal
+                    </h3>
+
+                    <p>
+
+                        มุ่งมั่นพัฒนาตนเอง
+                        เพื่อก้าวไปสู่อาชีพผู้ช่วยพยาบาล
+                        ในอนาคต
+
+                    </p>
+
+                    <div class="project-link">
+                        ↗
+                    </div>
+
+                </div>
+
+
+                <div class="project">
+
+                    <div class="project-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Future
+                    </h3>
+
+                    <p>
+
+                        นำความรู้และทักษะที่เรียนมา
+                        ไปใช้ในการดูแลและช่วยเหลือผู้ป่วย
+
+                    </p>
+
+                    <div class="project-link">
+                        ↗
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             EDUCATION
+        ==================================== -->
+
+        <section
+            class="section"
+            id="experience"
+        >
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="section-number">
+                        04 / EDUCATION
+                    </div>
+
+                    <h2 class="section-title">
+                        My Education
+                    </h2>
+
+                </div>
+
+                <p class="section-desc">
+
+                    ประวัติการศึกษาและเส้นทางสู่เป้าหมายในอนาคต
+
+                </p>
+
+            </div>
+
+
+            <div class="timeline">
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-year">
+                        PRIMARY SCHOOL
+                    </div>
+
+                    <h3>
+                        โรงเรียนบ้านดอนมะขาม
+                    </h3>
+
+                    <p>
+                        ศึกษาระดับประถมศึกษา
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-year">
+                        SECONDARY SCHOOL
+                    </div>
+
+                    <h3>
+                        โรงเรียนสามร้อยยอดวิทยาคม
+                    </h3>
+
+                    <p>
+                        ศึกษาระดับมัธยมศึกษา
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-year">
+                        VOCATIONAL CERTIFICATE
+                    </div>
+
+                    <h3>
+                        ประกาศนียบัตรอาชีพ
+                    </h3>
+
+                    <p>
+
+                        ศึกษาต่อในสายอาชีพ
+                        เพื่อเตรียมความพร้อม
+                        สำหรับการทำงานในอนาคต
+
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-year">
+                        FUTURE CAREER
+                    </div>
+
+                    <h3>
+                        ผู้ช่วยพยาบาล
+                    </h3>
+
+                    <p>
+
+                        เป้าหมายในอนาคต
+                        คือการเป็นผู้ช่วยพยาบาล
+                        และใช้ความรู้ความสามารถ
+                        ในการดูแลและช่วยเหลือผู้อื่น
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             CONTACT
+        ==================================== -->
+
+        <section
+            class="section"
+            id="contact"
+        >
+
+            <div class="contact">
+
+                <h2>
+                    Let's <span>Connect.</span>
+                </h2>
+
+                <p>
+
+                    ขอบคุณที่เข้ามาชม Portfolio
+                    ของนางสาวน่านฟ้า ม่วงกำพันธ์
+
+                </p>
+
+                <!--
+                    เปลี่ยน example@email.com
+                    เป็นอีเมลจริงของคุณได้
+                -->
+
+                <a
+                    href="mailto:example@email.com"
+                    class="primary"
+                >
+                    Contact Me →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+
+    <footer>
+
+        © 2026 Nanfah Muangkhamphan
+        — Creative Portfolio
+
+    </footer>
 
 </body>
 </html>
